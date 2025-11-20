@@ -11,8 +11,9 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void createUser(UserRequest userRequest){
+    public User createUser(UserRequest userRequest){
         User user = userRequest.toEntity();
         userRepository.save(user);
+        return user;
     }
 }

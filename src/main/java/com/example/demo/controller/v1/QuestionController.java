@@ -28,6 +28,7 @@ public class QuestionController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<AnswerRequest> postQuestion(@Valid @RequestBody AnswerRequest answerRequest) {
+        questionService.saveQuestion(answerRequest);
         return ResponseEntity.ok(answerRequest);
     }
 }

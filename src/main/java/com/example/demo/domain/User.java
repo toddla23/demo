@@ -6,12 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Entity
 public class User {
 
@@ -19,13 +17,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
-    private final String name;
+    private String name;
     @NotNull
-    private final int age;
+    private int age;
     @NotNull
-    private final int gender;
-    private final String location;
-    private final String advancedInformation;
+    private int gender;
+    private String location;
+    private String advancedInformation;
+    protected User() {}
 
+
+    public User(String name, int age, int gender, String location, String advancedInformation) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.location = location;
+        this.advancedInformation = advancedInformation;
+    }
 
 }

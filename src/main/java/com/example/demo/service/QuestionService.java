@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.answer.AnswerRequest;
 import com.example.demo.dto.question.QuestionResponse;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,10 @@ public class QuestionService {
         answers.add("test2");
         QuestionResponse questionResponse = new QuestionResponse("test", answers);
         return questionResponse;
+    }
+
+    public String saveQuestion(AnswerRequest answerRequest){
+
+        return "OK";
     }
 }

@@ -14,6 +14,10 @@ answer:string
 @Getter
 @Setter
 public class AnswerRequest {
+
+    @NotEmpty
+    private String question;
+
     @NotEmpty
     private String answer;
 

@@ -33,7 +33,7 @@ public class UserRequest {
     @NotNull
     @Min(value = 0)
     private int age;
-    
+
     @Schema(description = "성별 (0:남자, 1:여자", example = "0")
     @NotNull
     private int gender;
@@ -43,6 +43,15 @@ public class UserRequest {
     @Schema(description = "기저질환", example = "천식, 비염")
     @NotNull
     private String advancedInformation;
+
+    public UserRequest(String name, int age, int gender, String location, String advancedInformation) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.location = location;
+        this.advancedInformation = advancedInformation;
+
+    }
 
     public User toEntity() {
         return new User(this.name, this.age, this.gender, this.location, this.advancedInformation);
