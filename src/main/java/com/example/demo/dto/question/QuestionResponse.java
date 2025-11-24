@@ -8,11 +8,13 @@ import java.util.ArrayList;
 @Getter
 @Setter
 public class QuestionResponse {
+    int step;
     private String question;
     private ArrayList<String> options;
 
 
-    public QuestionResponse(String question, ArrayList<String> options) {
+    public QuestionResponse(int step, String question, ArrayList<String> options) {
+        this.step = step;
         this.question = question;
         this.options = options;
     }

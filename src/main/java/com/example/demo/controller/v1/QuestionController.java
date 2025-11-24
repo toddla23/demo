@@ -2,12 +2,12 @@ package com.example.demo.controller.v1;
 
 import com.example.demo.dto.answer.AnswerRequest;
 import com.example.demo.dto.question.QuestionResponse;
+import com.example.demo.service.AnswerService;
 import com.example.demo.service.QuestionService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,13 +22,8 @@ public class QuestionController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<QuestionResponse> getQuestion() {
-        QuestionResponse questionResponse = questionService.getQuestion();
+        int step = AnswerService.answers.size() + 1;
+        QuestionResponse questionResponse = questionService.getQuestion(step);
         return ResponseEntity.ok(questionResponse);
-    }
-
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public ResponseEntity<AnswerRequest> postQuestion(@Valid @RequestBody AnswerRequest answerRequest) {
-        questionService.saveQuestion(answerRequest);
-        return ResponseEntity.ok(answerRequest);
     }
 }
