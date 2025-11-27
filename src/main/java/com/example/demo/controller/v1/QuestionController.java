@@ -1,11 +1,9 @@
 package com.example.demo.controller.v1;
 
-import com.example.demo.dto.answer.AnswerRequest;
 import com.example.demo.dto.question.QuestionResponse;
 import com.example.demo.service.AnswerService;
 import com.example.demo.service.QuestionService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

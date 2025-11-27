@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Question;
 import com.example.demo.dto.question.QuestionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,15 +9,10 @@ import java.util.ArrayList;
 
 @Service
 public class QuestionService {
-
     @Autowired
-    WebClient webClient;
+    AiService aiService;
 
     public QuestionResponse getQuestion(int step) {
-
-        QuestionResponse questionResponse = webClient.get().uri("http://localhost:8080/questions/" + Integer.toString(step)).retrieve().bodyToMono(QuestionResponse.class).block();
-
-
-        return questionResponse;
+        return aiService.getQuestion(step);
     }
 }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Tag(name = "Answer", description = "질문에 대한 응답 관련 엔드포인트")
 @RestController
@@ -24,9 +26,16 @@ public class AnswerController {
 
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public ResponseEntity<ArrayList<Answer>> saveAnswer(@Valid @RequestBody AnswerRequest answerRequest) {
+    public ResponseEntity<Map<String, Boolean>> saveAnswer(@Valid @RequestBody AnswerRequest answerRequest) {
         ArrayList<Answer> result = answerService.saveAnswer(answerRequest);
         answerService.printAnswers();
-        return ResponseEntity.ok(result);
+        // 결과 생성
+        Map<String, Boolean> response = new HashMap<>();
+        if (result.size() == 5) {
+            response.put("isClear", true);
+        } else {
+            response.put("isClear", false);
+        }
+        return ResponseEntity.ok(response);
     }
 }

@@ -2,6 +2,7 @@ package com.example.demo.controller.v1;
 
 
 import com.example.demo.dto.result.ResultResponse;
+import com.example.demo.service.AnswerService;
 import com.example.demo.service.ResultService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,10 @@ public class ResultController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<ResultResponse> getResult() {
-        ResultResponse resultResponse = new ResultResponse("result", "department");
-        return ResponseEntity.ok(resultResponse);
+//        ResultResponse resultResponse = new ResultResponse("result", "department");
+        ResultResponse result = resultService.getResult();
+        AnswerService.answers.clear();
+
+        return ResponseEntity.ok(result);
     }
 }
